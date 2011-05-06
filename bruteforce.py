@@ -7,7 +7,7 @@ def computePi(brute_hash):
 	oldpi, pi, mypi = 0.0,0.0,0.0
 	done = False
 #	print "rank", rank, "size", size
-	files = glob("dicts/x*")
+	files = glob("pympi-test/dicts/x*")
 	for i in range(rank, len(files), size): 
 		words = open(files[i])
 		for word in words.readlines():
