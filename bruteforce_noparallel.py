@@ -1,11 +1,9 @@
 import random, hashlib
-from boost import mpi
 from glob import glob
 
 def computePi(brute_hash):
-	rank, size = mpi.rank, mpi.size
 	files = glob("pympi-test/dicts/x*")
-	for i in range(rank, len(files), size): 
+	for i in range(0, len(files)): 
 		words = open(files[i])
 		for word in words.readlines():
 			for i in range(-1,10):
@@ -21,3 +19,5 @@ def computePi(brute_hash):
 if __name__=="__main__":
 	passwd = computePi(hashlib.sha256("simon22").hexdigest())
 	print passwd
+	
+
