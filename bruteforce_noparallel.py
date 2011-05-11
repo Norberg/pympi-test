@@ -1,9 +1,9 @@
 import random, hashlib
 from glob import glob
 
-def computePi(brute_hash):
+def find_password(brute_hash, start_chunk, nr_of_instances):
 	files = glob("pympi-test/dicts/x*")
-	for i in range(0, len(files)): 
+	for i in range(start_chunk, len(files), nr_of_instances): 
 		words = open(files[i])
 		for word in words.readlines():
 			for i in range(-1,10):
@@ -17,7 +17,5 @@ def computePi(brute_hash):
 	return None
 
 if __name__=="__main__":
-	passwd = computePi(hashlib.sha256("simon22").hexdigest())
+	passwd = find_password(hashlib.sha256("simon22").hexdigest(), 0, 1)
 	print passwd
-	
-
